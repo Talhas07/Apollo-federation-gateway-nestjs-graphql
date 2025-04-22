@@ -64,7 +64,9 @@ Apollo Federation allows you to build a unified graph from multiple services:
 ```graphql
 type User @key(fields: "id") {
   id: ID!
-  name: String
+  firstName: String
+  lastName: String
+  fullName: String
 }
 ```
 
@@ -76,10 +78,6 @@ type Post {
   authorId: ID!
 }
 
-extend type User @key(fields: "id") {
-  id: ID! @external
-  posts: [Post]
-}
 ```
 
 ## Testing the API
