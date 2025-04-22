@@ -91,34 +91,54 @@ To test the federation setup:
 3. Execute this query:
 
 ```graphql
-query {
-  user(id: "1") {
-    id
-    name
-    posts {
-      id
-      title
+query Allposts {
+    allposts {
+        id
+        title
+        authorId
     }
-  }
+    users {
+        id
+        firstName
+        lastName
+        fullName
+    }
 }
+
 ```
 
 You should receive a unified response like:
 
 ```json
 {
-  "data": {
-    "user": {
-      "id": "1",
-      "name": "John Doe",
-      "posts": [
-        {
-          "id": "101",
-          "title": "First Post"
-        }
-      ]
+    "data": {
+        "allposts": [
+            {
+                "id": "1",
+                "title": "Hello World",
+                "authorId": "1"
+            },
+            {
+                "id": "2",
+                "title": "GraphQL Rocks",
+                "authorId": "2"
+            }
+        ],
+        "users": [
+            {
+                "id": "1",
+                "firstName": "John",
+                "lastName": "Doe",
+                "fullName": "John Doe"
+            },
+            {
+                "id": "2",
+                "firstName": "Jane",
+                "lastName": "Smith",
+                "fullName": "Jane Smith"
+            }
+        ]
     }
-  }
 }
 ```
 
